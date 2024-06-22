@@ -5,6 +5,7 @@ import productRouter from "./productRoutes.js";
 import salesRouter from "./saleRouter.js";
 import userRouter from "./userRoutes.js";
 import validationTokenRouter from "./validationTokenRouter.js";
+import orderRouter from "./orderRoutes.js";
 
 const allRoutes = express.Router();
 
@@ -15,5 +16,6 @@ allRoutes.use(categoryRouter);
 allRoutes.use(productRouter);
 allRoutes.use(salesRouter);
 allRoutes.use(cartRouter);
+allRoutes.use(orderRouter);
 
 export default allRoutes;

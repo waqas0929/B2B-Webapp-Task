@@ -1,6 +1,6 @@
-import productModel from './productModel.js';
 import categoryModel from './categoryModel.js';
 import userModel from './userModel.js';
+import productModel from './productModel.js';
 import salesModel from './saleModel.js';
 import cartModel from './cartModel.js';
 import sequelize from '../db/config.js';

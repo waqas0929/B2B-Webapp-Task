@@ -1,9 +1,10 @@
-import productModel from "../models/productModel.js";
 import salesModel from "../models/saleModel.js";
+import productModel from "../models/productModel.js";
+import userModel from "../models/userModel.js";
 import errorHandler from "../utils/errorHandler.js";
 import cartModel from "../models/cartModel.js";
-
 const salesController = {
+
   buyNow: async (req, res) => {
     try {
       const { productId, quantity } = req.body;
@@ -120,7 +121,12 @@ const salesController = {
 
   buyNow: async (req, res) => {
     try {
-      const { userId, productId, quantity } = req.body;
+      const { productId, quantity } = req.body;
+      const userId = req.user.id;
+
+      if (!userId || !productId || !quantity) {
+        return res.status(400).json({ message: "Missing required fields" });
+      }
 
       const product = await productModel.findByPk(productId);
       if (!product) {
@@ -164,13 +170,7 @@ const salesController = {
   getUserOrders: async (req, res) => {
     try {
       const { userId } = req.params;
-
-      const user = await userModel.findByPk(userId);
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
-      }
-
-      const orders = await saleModel.findAll({
+      const orders = await salesModel.findAll({
         where: { userId },
         include: [
           {
@@ -180,7 +180,11 @@ const salesController = {
         ],
       });
 
-      res.json(orders);
+      if (!orders.length) {
+        return res.status(404).json({ error: 'No orders found for this user.' });
+      }
+
+      res.status(200).json({ orders });
     } catch (error) {
       console.error('Error fetching user orders:', error);
       res.status(500).json({ error: 'Failed to fetch user orders' });

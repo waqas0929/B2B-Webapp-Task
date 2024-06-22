@@ -16,6 +16,5 @@ salesRouter.put(
 );
 salesRouter.delete("/sales/delete/:id",authenticateJWT,authorizeRole("admin"),salesController.deleteSalesById);
 salesRouter.post('/buyNow', authMiddleware, salesController.buyNow);
-salesRouter.get("/order/:userId", authenticateJWT, salesController.getUserOrders);
 
 export default salesRouter;
