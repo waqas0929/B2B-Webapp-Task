@@ -1,5 +1,4 @@
 import { DataTypes } from "sequelize";
-
 import sequelize from "../db/config.js";
 
 const userModel = sequelize.define("user", {
@@ -27,6 +26,15 @@ const userModel = sequelize.define("user", {
     type: DataTypes.STRING,
     allowNull: false,
     defaultValue: "user",
+  },
+  phoneNumber: {
+    type: DataTypes.STRING,
+  },
+  address: {
+    type: DataTypes.STRING,
+  },
+  postalCode: {
+    type: DataTypes.STRING,
   },
 });
 

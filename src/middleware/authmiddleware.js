@@ -4,9 +4,13 @@ import userModel from "../models/userModel.js";
 import errorHandler from "../utils/errorHandler.js";
 
 const authenticateJWT = async (req, res, next) => {
-  const token =
-    req.headers.authorization && req.headers.authorization.split(" ")[1];
+  const authHeader = req.headers.authorization;
 
+  if (!authHeader) {
+    return errorHandler(res, "ACCESS_DENIED");
+  }
+
+  const token = authHeader.split(" ")[1];
   if (!token) {
     return errorHandler(res, "ACCESS_DENIED");
   }
@@ -25,10 +29,10 @@ const authenticateJWT = async (req, res, next) => {
       return errorHandler(res, "INVALID_TOKEN");
     }
 
-    req.user = user; // Ensure user is attached to req object
+    req.user = user;
     next();
   } catch (error) {
-    console.error(error);
+    console.error("Authentication error:", error.message);
     return errorHandler(res, "INTERNAL_SERVER_ERROR");
   }
 };

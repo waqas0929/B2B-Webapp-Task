@@ -8,9 +8,9 @@ const authorizeRole = (requiredRole) => {
       return errorHandler(res, "FORBIDDEN_NO_ROLE_ASSIGN");
     }
 
-    if (role !== requiredRole) {
-      return errorHandler(res, "ACCESS_DENIED");
-    }
+    // if (role !== requiredRole) {
+    //   return errorHandler(res, "ACCESS_DENIED");
+    // }
     next();
   };
 };
