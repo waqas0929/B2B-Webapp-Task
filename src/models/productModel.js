@@ -1,8 +1,7 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../db/config.js';
-import salesModel from './saleModel.js';
 
-const Product = sequelize.define('Product', {
+const productModel = sequelize.define('Product', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -32,12 +31,10 @@ const Product = sequelize.define('Product', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  // Assuming categoryName is optional or not required
   categoryName: {
     type: DataTypes.STRING,
     allowNull: true,
   },
 });
 
-
-export default Product;
+export default productModel;

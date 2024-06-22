@@ -1,26 +1,25 @@
-// src/associations.js
-import Product from './productModel.js';
-import Category from './categoryModel.js';
-import User from './userModel.js';
-import Sale from './saleModel.js';
-import Cart from './cartModel.js';
+import productModel from './productModel.js';
+import categoryModel from './categoryModel.js';
+import userModel from './userModel.js';
+import salesModel from './saleModel.js';
+import cartModel from './cartModel.js';
 import sequelize from '../db/config.js';
 
 // Define associations
-Product.belongsToMany(Category, { through: 'ProductCategory' });
-Category.belongsToMany(Product, { through: 'ProductCategory' });
+productModel.belongsToMany(categoryModel, { through: 'ProductCategory' });
+categoryModel.belongsToMany(productModel, { through: 'ProductCategory' });
 
-User.hasMany(Sale, { foreignKey: 'userId' });
-Sale.belongsTo(User, { foreignKey: 'userId' });
+userModel.hasMany(salesModel, { foreignKey: 'userId' });
+salesModel.belongsTo(userModel, { foreignKey: 'userId' });
 
-Product.hasMany(Sale, { foreignKey: 'productId' });
-Sale.belongsTo(Product, { foreignKey: 'productId' });
+productModel.hasMany(salesModel, { foreignKey: 'productId' });
+salesModel.belongsTo(productModel, { foreignKey: 'productId' });
 
-User.hasMany(Cart, { foreignKey: 'userId' });
-Cart.belongsTo(User, { foreignKey: 'userId' });
+userModel.hasMany(cartModel, { foreignKey: 'userId' });
+cartModel.belongsTo(userModel, { foreignKey: 'userId' });
 
-Product.hasMany(Cart, { foreignKey: 'productId' });
-Cart.belongsTo(Product, { foreignKey: 'productId' });
+productModel.hasMany(cartModel, { foreignKey: 'productId' });
+cartModel.belongsTo(productModel, { foreignKey: 'productId' });
 
 // Sync associations with the database
 sequelize.sync();

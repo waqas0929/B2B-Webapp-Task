@@ -1,7 +1,7 @@
-import { DataTypes } from "sequelize";
-import sequelize from "../db/config.js";
+import { DataTypes } from 'sequelize';
+import sequelize from '../db/config.js';
 
-const userModel = sequelize.define("user", {
+const userModel = sequelize.define('user', {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -25,7 +25,7 @@ const userModel = sequelize.define("user", {
   role: {
     type: DataTypes.STRING,
     allowNull: false,
-    defaultValue: "user",
+    defaultValue: 'user',
   },
   phoneNumber: {
     type: DataTypes.STRING,
