@@ -2,9 +2,9 @@ import express from "express";
 import cartRouter from "./cartRoutes.js";
 import categoryRouter from "./categoryRoutes.js";
 import productRouter from "./productRoutes.js";
-import salesRouter from "./saleRoutes.js";
+import salesRouter from "./saleRouter.js";
 import userRouter from "./userRoutes.js";
-import validationTokenRouter from "./validationTokenRoutes.js";
+import validationTokenRouter from "./validationTokenRouter.js";
 import orderRouter from "./orderRoutes.js";
 
 const allRoutes = express.Router();
