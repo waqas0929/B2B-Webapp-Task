@@ -1,8 +1,8 @@
 import express from 'express';
-import salesController from '../controllers/salesController.js';
-import authMiddleware from '../middleware/authMiddleware.js';
-import cartController from '../controllers/cartController.js';
 import authenticateJWT from '../middleware/authMiddleware.js';
+import salesController from '../controllers/salesController.js';
+import cartController from '../controllers/cartController.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const cartRouter = express.Router();
 
