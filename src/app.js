@@ -1,4 +1,3 @@
-// src/app.js
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -6,7 +5,7 @@ import 'dotenv/config.js';
 import { connectDB } from './db/config.js';
 import syncDb from './db/init.js';
 import allRoutes from './routes/allRoutes.js';
-import './models/associations.js';  // Ensure this path is correct
+import './models/associations.js';
 
 const app = express();
 const __dirname = path.dirname(new URL(import.meta.url).pathname).replace(/^\/([A-Z]:\/)/, '$1');

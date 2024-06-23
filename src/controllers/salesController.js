@@ -155,18 +155,7 @@ const salesController = {
     }
   },
 
-  getCartItems: async (req, res) => {
-    try {
-      const { userId } = req.params;
-
-      const cartItems = await cartModel.findAll({ where: { userId }, include: [productModel] });
-
-      res.status(200).json(cartItems);
-    } catch (error) {
-      console.error('Error fetching cart items:', error);
-      res.status(500).json({ error: 'Failed to fetch cart items', details: error });
-    }
-  },
+ 
   getUserOrders: async (req, res) => {
     try {
       const { userId } = req.params;
