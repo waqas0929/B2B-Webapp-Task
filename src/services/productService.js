@@ -1,4 +1,4 @@
-import redisClient from "../db/redisConfig.js";
+// import redisClient from "../db/redisConfig.js";
 import userModel from "../models/userModel.js"; // Assuming you have a user model
 
 async function getUserData(userId) {

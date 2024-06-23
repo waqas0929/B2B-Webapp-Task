@@ -6,7 +6,6 @@ import 'dotenv/config.js';
 import { connectDB } from './db/config.js';
 import syncDb from './db/init.js';
 import allRoutes from './routes/allRoutes.js';
-import redisClient from './db/redisConfig.js'; // Ensure Redis client is imported
 import './models/associations.js';  // Ensure this path is correct
 
 const app = express();
